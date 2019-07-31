@@ -7,7 +7,7 @@ class HavaBugPage extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HavaBugPage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin ,AutomaticKeepAliveClientMixin {
   TabController controller;
   int _currentIndex = 0; //选中下标
 
@@ -19,6 +19,7 @@ class HomeScreenState extends State<HavaBugPage>
 
     super.initState();
   }
+
 
   ///
   /// tab改变监听
@@ -34,6 +35,12 @@ class HomeScreenState extends State<HavaBugPage>
 //        getData();
       }
     }
+  }
+
+
+  @override
+  bool get wantKeepAlive {
+        return true;
   }
 
   getData() async {

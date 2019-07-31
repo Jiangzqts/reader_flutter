@@ -7,7 +7,7 @@ class FindPage extends StatefulWidget {
   State<StatefulWidget> createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<FindPage> {
+class HomeScreenState extends State<FindPage> with AutomaticKeepAliveClientMixin{
   ScrollController _controller;
 
   @override
@@ -23,6 +23,7 @@ class HomeScreenState extends State<FindPage> {
         getData();
       }
     });
+    super.initState();
   }
 
   List<Records> _mDate = new List();
@@ -33,6 +34,11 @@ class HomeScreenState extends State<FindPage> {
     return null;
   }
 
+
+  @override
+  bool get wantKeepAlive {
+        return true;
+  }
 
   getData() async {
     Dio dio = new Dio();

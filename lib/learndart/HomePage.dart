@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
   State<StatefulWidget> createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomePage> {
+class HomeScreenState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   List<Data> _mDate = new List();
 
   @override
@@ -17,6 +17,12 @@ class HomeScreenState extends State<HomePage> {
     // TODO: implement initState
     getData();
     super.initState();
+  }
+
+
+  @override
+  bool get wantKeepAlive {
+    return true;
   }
 
   @override

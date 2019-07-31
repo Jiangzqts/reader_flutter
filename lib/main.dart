@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: new ThemeData(primaryColor: Colors.white,brightness: Brightness.light,backgroundColor: Color(0xffffffff)),
+      theme: new ThemeData(
+          primaryColor: Colors.white,
+          brightness: Brightness.light,
+          backgroundColor: Color(0xffffffff)),
       home: new RandomWords(),
     );
   }
@@ -29,27 +32,46 @@ class RandomWords extends StatefulWidget {
   }
 }
 
-class RandowmWordsState extends State<RandomWords> {
+class RandowmWordsState extends State<RandomWords>
+    with SingleTickerProviderStateMixin {
   var tabImages;
 
   int _tabIndex = 0;
 
-
   var _pageList;
 
-  var appBarTitles = ['首页', '发现', '已购','我的'];
+  var appBarTitles = ['首页', '发现', '已购', '我的'];
+  var _controller = PageController(
+    initialPage: 0,
+  );
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    initDate();
+    super.initState();
+  }
 
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    initDate();
-
-
-
-
     return Scaffold(
-        body: _pageList[_tabIndex],
+        body: PageView(
+          children: <Widget>[
+            new HomePage(),
+            new FindPage(),
+            new HavaBugPage(),
+            new MePage(),
+          ],
+          controller: _controller,
+          physics: NeverScrollableScrollPhysics(),
+        ),
+//        _pageList[_tabIndex],
         bottomNavigationBar: new BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: getTabIcon(0), title: getTabTitle(0)),
@@ -61,11 +83,11 @@ class RandowmWordsState extends State<RandomWords> {
           iconSize: 22,
           type: BottomNavigationBarType.fixed,
           onTap: (index) {
+            _controller.jumpToPage(index);
             setState(() {
               _tabIndex = index;
             });
           },
-
         ));
   }
 
@@ -114,6 +136,7 @@ class RandowmWordsState extends State<RandomWords> {
     }
     return tabImages[curIndex][0];
   }
+
   /*
    * 获取bottomTab的颜色和文字
    */
@@ -126,7 +149,4 @@ class RandowmWordsState extends State<RandomWords> {
           style: new TextStyle(fontSize: 11, color: const Color(0xFFCCCCCC)));
     }
   }
-
-
-
 }
