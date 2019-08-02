@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MePage extends StatefulWidget {
   @override
@@ -7,6 +10,15 @@ class MePage extends StatefulWidget {
 }
 
 class HomeScreenState extends State<MePage> with AutomaticKeepAliveClientMixin{
+  File _image;
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = image;
+    });
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -29,7 +41,7 @@ class HomeScreenState extends State<MePage> with AutomaticKeepAliveClientMixin{
                   children: <Widget>[
                     new Row(
                       children: <Widget>[
-                        new Container(
+                        new GestureDetector(child:new Container(
                           margin: EdgeInsets.only(right: 10),
                           child: new CircleAvatar(
                             backgroundImage: new NetworkImage(
@@ -37,7 +49,11 @@ class HomeScreenState extends State<MePage> with AutomaticKeepAliveClientMixin{
                           ),
                           width: 60,
                           height: 60,
-                        ),
+                        ),onTap: (){
+                             getImage();
+                             print("答应");
+                        } ),
+
                         new Text(
                           "强强打太极",
                           style: TextStyle(

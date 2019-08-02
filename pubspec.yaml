@@ -31,6 +31,10 @@ dependencies:
   dio: 2.1.13
 
   flutter_swiper : ^1.1.6
+  flutter_webview_plugin: ^0.3.5
+
+  image_picker: ^0.6.1
+
 
 
 
@@ -115,7 +119,10 @@ flutter:
     - images/res_icon_103.png
     - images/res_icon_104.png
     - images/res_icon_105.png
+    - images/res_icon_205.png
+    - images/res_icon_206.png
 
     - images/res_icon_catagory_bg.png
     - images/lake.jpg
     - images/my_bg.png
+    - web/html/bookDetails.html

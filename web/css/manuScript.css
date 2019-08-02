@@ -1,0 +1,198 @@
+@charset "utf-8";
+
+/* 样式重置 */
+body,
+ol,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+th,
+td,
+dl,
+dd,
+form,
+fieldset,
+legend,
+input,
+textarea,
+select {
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font: 12px "宋体", "Arial Narrow", HELVETICA;
+    background: #fff;
+    -webkit-text-size-adjust: 100%
+}
+
+a {
+    color: #172c45;
+    text-decoration: none
+}
+
+a:hover {
+    color: #cd0200;
+    text-decoration: underline
+}
+
+em {
+    font-style: normal
+}
+
+ul li {
+list-style: disc inside;
+text-align: left;
+}
+ol li {
+list-style: decimal inside;
+text-align: left;
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+p {
+    word-wrap: break-word
+}
+
+/* 页面样式 */
+
+.dz-app-warpper {
+    margin: 0 16px;
+    padding-bottom: 1px;
+}
+
+.dz-app-warpper h1 {
+    font-family: PingFangSC-Medium;
+    font-size: 27px;
+    color: #333333;
+    letter-spacing: 0;
+    margin-top: 12px;
+    margin-top: 20px;
+    line-height: 40px;
+}
+
+.dz-app-warpper .center {
+    text-align: center
+}
+
+.dz-app-player {
+    height: 66px;
+    background: #F7F7F7;
+    border-radius: 5px;
+    margin-top: 20px;
+    line-height: 66px;
+    position: relative;
+}
+
+.dz-app-player img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.dz-app-player .player-title {
+    position: absolute;
+    top: 8px;
+    left: 78px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0;
+    line-height: 20px;
+    width:70%;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+
+}
+
+.dz-app-player .player-total {
+    position: absolute;
+    top: 38px;
+    left: 78px;
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 20px;
+}
+
+.dz-app-article-related {
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin-top: 4px;
+   word-wrap: break-word;
+}
+.dz-app-time{
+font-family: PingFangSC-Regular;
+font-size: 12px;
+color: #999999;
+letter-spacing: 0;
+line-height: 20px;
+margin-top:8px;
+}
+.dz-app-time span{
+
+display:inline-block;
+margin-right:3px;
+}
+.dz-app-read {
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 22px;
+    margin-top: 8px;
+    word-wrap: break-word;
+}
+
+.dz-app-content {
+    text-align: justify;
+    font-family: PingFangSC-Regular;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin-top: 28px;
+}
+
+.dz-app-content p {
+    font-family: PingFangSC-Regular;
+    font-size: 18px;
+    color: #333333;
+    letter-spacing: 0;
+    margin-top: 20px;
+    line-height: 28px;
+}
+
+.dz-app-content img {
+    max-width: 100% !important;
+}
+
+.dz-source {
+    font-family: PingFangSC-Regular;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    line-height: 22px;
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ArticleDetail.dart';
 import 'entity.dart';
 import 'package:dio/dio.dart';
 
@@ -7,7 +8,8 @@ class FindPage extends StatefulWidget {
   State<StatefulWidget> createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<FindPage> with AutomaticKeepAliveClientMixin{
+class HomeScreenState extends State<FindPage>
+    with AutomaticKeepAliveClientMixin {
   ScrollController _controller;
 
   @override
@@ -28,16 +30,14 @@ class HomeScreenState extends State<FindPage> with AutomaticKeepAliveClientMixin
 
   List<Records> _mDate = new List();
 
-
   Future _pullToRefresh() async {
     getData();
     return null;
   }
 
-
   @override
   bool get wantKeepAlive {
-        return true;
+    return true;
   }
 
   getData() async {
@@ -62,98 +62,110 @@ class HomeScreenState extends State<FindPage> with AutomaticKeepAliveClientMixin
     return Scaffold(
       appBar: new AppBar(
         title: new Text("发现",
-            style: new TextStyle(fontWeight: FontWeight.normal,fontSize: 16, color: Color(0xff333333))),
+            style: new TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+                color: Color(0xff333333))),
         centerTitle: true,
       ),
       body: _mDate.length == 0
           ? new Center(child: new CircularProgressIndicator())
           : new RefreshIndicator(
-              child: new ListView.builder(cacheExtent: 3,
+              child: new ListView.builder(
+                cacheExtent: 3,
                 controller: _controller,
                 itemBuilder: (contex, index) {
-                  return new Container(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 20),
-                    child: new Column(
-                      children: <Widget>[
-                        new Row(
-                          children: <Widget>[
-                            new Expanded(
-                              child: new Column(
-                                children: <Widget>[
-                                  new Container(
-                                    width: 239,
-                                    child: new Text(
-                                      _mDate[index].title,
-                                      style: TextStyle(
-                                          color: Color(0xff333333),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  new Container(
-                                    padding: EdgeInsets.only(top: 8),
-                                    width: 239,
-                                    child: new Text(
-                                      _mDate[index].introduction,
-                                      style: TextStyle(
-                                          color: Color(0xff666666),
-                                          fontSize: 14),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            new Container(
-                              width: 105,
-                              height: 105,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  image: DecorationImage(
-                                      image: NetworkImage(_mDate[index].cover),
-                                      fit: BoxFit.cover)),
-                            )
-                          ],
-                        ),
-                        new Container(
-                          padding: EdgeInsets.only(top: 8),
-                          child: new Row(
+                  return new GestureDetector(
+                    child: new Container(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 20),
+                      child: new Column(
+                        children: <Widget>[
+                          new Row(
                             children: <Widget>[
-                              //底部
-                              new Image.asset(
-                                'images/res_icon_307.png',
-                                width: 16,
-                                height: 16,
-                              ),
-                              new Text(_mDate[index].browseCntNm,
-                                  style: TextStyle(
-                                      fontSize: 12, color: Color(0xff999999))),
-                              new Container(
-                                padding: EdgeInsets.only(left: 64),
-                                child: new Row(
+                              new Expanded(
+                                child: new Column(
                                   children: <Widget>[
-                                    new Image.asset(
-                                      'images/res_icon_306.png',
-                                      width: 16,
-                                      height: 16,
+                                    new Container(
+                                      width: 239,
+                                      child: new Text(
+                                        _mDate[index].title,
+                                        style: TextStyle(
+                                            color: Color(0xff333333),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
-                                    new Text(
-                                      _mDate[index].likeCnt.toString(),
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xff999999)),
+                                    new Container(
+                                      padding: EdgeInsets.only(top: 8),
+                                      width: 239,
+                                      child: new Text(
+                                        _mDate[index].introduction,
+                                        style: TextStyle(
+                                            color: Color(0xff666666),
+                                            fontSize: 14),
+                                      ),
                                     )
                                   ],
                                 ),
+                              ),
+                              new Container(
+                                width: 105,
+                                height: 105,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    image: DecorationImage(
+                                        image:
+                                            NetworkImage(_mDate[index].cover),
+                                        fit: BoxFit.cover)),
                               )
                             ],
                           ),
-                        ),
-                        new Container(
-                          padding: EdgeInsets.only(top: 20),
-                          child: new Divider(),
-                        ),
-                      ],
+                          new Container(
+                            padding: EdgeInsets.only(top: 8),
+                            child: new Row(
+                              children: <Widget>[
+                                //底部
+                                new Image.asset(
+                                  'images/res_icon_307.png',
+                                  width: 16,
+                                  height: 16,
+                                ),
+                                new Text(_mDate[index].browseCntNm,
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Color(0xff999999))),
+                                new Container(
+                                  padding: EdgeInsets.only(left: 64),
+                                  child: new Row(
+                                    children: <Widget>[
+                                      new Image.asset(
+                                        'images/res_icon_306.png',
+                                        width: 16,
+                                        height: 16,
+                                      ),
+                                      new Text(
+                                        _mDate[index].likeCnt.toString(),
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xff999999)),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          new Container(
+                            padding: EdgeInsets.only(top: 20),
+                            child: new Divider(),
+                          ),
+                        ],
+                      ),
                     ),
+                    onTap: () {
+
+                      Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ArticleDetail()));
+                    },
                   );
                 },
                 itemCount: _mDate.length,
@@ -162,4 +174,3 @@ class HomeScreenState extends State<FindPage> with AutomaticKeepAliveClientMixin
     );
   }
 }
-
