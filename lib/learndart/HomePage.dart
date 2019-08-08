@@ -28,7 +28,7 @@ class HomeScreenState extends State<HomePage> with AutomaticKeepAliveClientMixin
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: AppBar(elevation: 0,
           centerTitle: true,
           title: Text(
             '读者蜂巢',
@@ -45,7 +45,7 @@ class HomeScreenState extends State<HomePage> with AutomaticKeepAliveClientMixin
             )
           ],
         ),
-        body: ListView.builder(
+        body: ListView.builder(physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             Data data = _mDate[index];
             String type = data.type;
@@ -168,7 +168,7 @@ class HomeScreenState extends State<HomePage> with AutomaticKeepAliveClientMixin
                     ),
 
 //                    //早安夜听
-                    new ListView.builder(
+                    new ListView.builder(physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, indexs) {
                         List<Recordss> locals =

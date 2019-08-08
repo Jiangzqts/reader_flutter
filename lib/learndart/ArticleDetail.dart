@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,21 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class ArticleDetail extends StatefulWidget {
+
+  String docId;
+
   @override
   State createState() {
-    return new ArticleState();
+    return new ArticleState(docId: docId);
   }
+
+  ArticleDetail({Key key,@required this.docId});
 }
 
 class ArticleState extends State<ArticleDetail> {
+  String docId;
+  ArticleState({Key key,@required this.docId});
+
   final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
   Future<String> _getFile() async {
@@ -88,10 +97,17 @@ class ArticleState extends State<ArticleDetail> {
     Dio dio = new Dio();
 
     BaseOptions options = new BaseOptions();
-
-    FormData formData = new FormData.from({"docId": 'cotpic1088ca70406d42e5bfacf746f498acc6'});
+//    options.contentType=ContentType.json;
+    dio.options=options;
+    print("docId===" + docId);
+    FormData formData = new FormData.from({"docId": docId});
     final responsesss =
-    await dio.post("http://devapi.duzhe.com/api/reader/discovery/article/detail", data: formData);
+    await dio.post("http://devapi.duzhe.com/api/reader/discovery/article/detail", data: {"docId": docId});
+
+
+    flutterWebviewPlugin.evalJavascript("javascript:Dz.refreshHtmlContent(${responsesss.data})");
+
+
     print("responseJsonsssssssssss===" + responsesss.data.toString());
 //    setState(() {
 //      flutterWebviewPlugin.evalJavascript("javascript:Dz.refreshHtmlContent(${responsesss.data.toString()})");

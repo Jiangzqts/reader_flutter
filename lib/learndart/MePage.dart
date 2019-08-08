@@ -30,7 +30,7 @@ class HomeScreenState extends State<MePage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
+        value: SystemUiOverlayStyle(statusBarColor:Colors.transparent,statusBarIconBrightness: Brightness.light),
         child: new Container(
           child: new Stack(
             children: <Widget>[

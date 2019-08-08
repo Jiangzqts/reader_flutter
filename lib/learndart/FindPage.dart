@@ -164,7 +164,7 @@ class HomeScreenState extends State<FindPage>
                     ),
                     onTap: () {
 
-                      Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ArticleDetail()));
+                      Navigator.push(context, new MaterialPageRoute(builder: (context)=>new ArticleDetail(docId:_mDate[index].docId)));
                     },
                   );
                 },

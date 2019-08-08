@@ -6,9 +6,14 @@ import 'learndart/HavaBugPage.dart';
 import 'learndart/HomePage.dart';
 import 'learndart/JiKeFlutter.dart';
 import 'learndart/MePage.dart';
+import 'learndart/test.dart';
+
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(new MyApp());
+  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(statusBarColor:Colors.white,statusBarIconBrightness: Brightness.dark);
+  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
 class MyApp extends StatelessWidget {
@@ -16,9 +21,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       theme: new ThemeData(
-          primaryColor: Colors.white,
           brightness: Brightness.light,
-          backgroundColor: Color(0xffffffff)),
+          primaryColor: Colors.white,
+//          backgroundColor: Color(0xffffffff)
+      ),
       home: new RandomWords(),
     );
   }
@@ -38,7 +44,7 @@ class RandowmWordsState extends State<RandomWords>
 
   int _tabIndex = 0;
 
-  var _pageList;
+  var   _pageList;
 
   var appBarTitles = ['首页', '发现', '已购', '我的'];
   var _controller = PageController(
@@ -67,6 +73,7 @@ class RandowmWordsState extends State<RandomWords>
             new FindPage(),
             new HavaBugPage(),
             new MePage(),
+//            new MyApps(),
           ],
           controller: _controller,
           physics: NeverScrollableScrollPhysics(),
