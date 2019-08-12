@@ -35,6 +35,8 @@ dependencies:
 
   image_picker: ^0.6.1
 
+  path_provider: ^1.2.0
+
 
 
 
@@ -126,3 +128,5 @@ flutter:
     - images/lake.jpg
     - images/my_bg.png
     - web/html/bookDetails.html
+    - web/css/bookDetails.css
+    - web/js/bookDetails.js

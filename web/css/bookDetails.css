@@ -142,7 +142,7 @@ p {
 }
 .dz-lb-xszk{
     height:32px;
-    background:url(file:///android_asset/web/img/res_icon_397.png) no-repeat center center;
+    background:url(res_icon_397.png) no-repeat center center;
     background-size:100% 100%;
     margin:4px 0;
     margin-left:10px;
